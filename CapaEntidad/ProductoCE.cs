@@ -9,14 +9,14 @@ namespace CapaEntidad
     public class ProductoCE
     {
         //Propiedades
-        private int id;
-        private string descripcion;
-        private string categoria;
-        private double precio;
+        private int id = 0;
+        private string descripcion = "";
+        private string categoria = "";
+        private double precio = 0.00;
 
         //Constructor
         public ProductoCE() {}
-        public ProductoCE(int vId, string vDescripcion, string vCategoria, double vPrecio)
+        public ProductoCE(int vId = 0, string vDescripcion = "", string vCategoria = "", double vPrecio = 0.00)
         {
             this.id = vId;
             this.descripcion = vDescripcion;

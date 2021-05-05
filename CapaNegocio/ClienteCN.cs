@@ -18,36 +18,36 @@ namespace CapaNegocio
         public List<ClienteCE> listarCliente()
         {
             script = "SELECT * FROM cliente";
-            return cCD.readerProductos(script, "");
+            return cCD.readerCliente(script, "");
         }
 
         // Buscar Clientes
         public List<ClienteCE> buscarCliente(string buscar)
         {
             script = "SELECT * FROM cliente where nombre like '%' + @valor + '%'";
-            return cCD.readerProductos(script,buscar);
+            return cCD.readerCliente(script,buscar);
         }
 
         // Actualizar Cliente
-        public void actualizarCliente(int id, string nombre, string numruc, string direccion, int telefono)
+        public void actualizarCliente(ClienteCE cliente)
         {
             script = "UPDATE cliente set nombre = @nombre, numruc = @numruc, direccion = @direccion, telefono = @telefono where id = @id";
-            cCD.executeProductos(script, nombre, numruc, direccion, telefono, id);
+            cCD.executeCliente(script, cliente);
         }
 
         // Insertar Cliente
-        public void insertarCliente(string nombre, string numruc, string direccion, int telefono)
+        public void insertarCliente(ClienteCE cliente)
         {
             // Script SQL
             script = "INSERT INTO cliente(nombre, numruc, direccion, telefono) VALUES(@nombre, @numruc, @direccion, @telefono)";
-            cCD.executeProductos(script, nombre, numruc, direccion, telefono, 0);
+            cCD.executeCliente(script, cliente);
         }
 
         // Eliminar Cliente
-        public void eliminarCliente(int id)
+        public void eliminarCliente(ClienteCE cliente)
         {   // Script SQL
             script = "DELETE FROM cliente where id = @id";
-            cCD.executeProductos(script,"","","",0, id);
+            cCD.executeCliente(script, cliente);
         }
     }
 }

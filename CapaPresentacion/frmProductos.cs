@@ -8,12 +8,14 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using CapaNegocio;
+using CapaEntidad;
 
 namespace CapaPresentacion
 {
     public partial class frmProductos : Form
     {
         ProductoCN p = new ProductoCN();
+
 
         // Funciones:
 
@@ -50,7 +52,8 @@ namespace CapaPresentacion
             }
             else
             {
-                p.insertarProducto(descripcion, categoria, precio);
+                ProductoCE producto = new ProductoCE(0, descripcion, categoria, precio);
+                p.insertarProducto(producto);
                 actualizar();
                 limpiar();
             }
@@ -68,7 +71,8 @@ namespace CapaPresentacion
             }
             else
             {
-                p.actualizarProducto(id, descripcion, categoria, precio);
+                ProductoCE producto = new ProductoCE(id, descripcion, categoria, precio);
+                p.actualizarProducto(producto);
                 actualizar();
             }
         }
@@ -82,7 +86,8 @@ namespace CapaPresentacion
             }
             else
             {
-                p.eliminarProducto(id);
+                ProductoCE producto = new ProductoCE(id, "", "", 0.00);
+                p.eliminarProducto(producto);
                 actualizar();
             }
         }
@@ -117,6 +122,12 @@ namespace CapaPresentacion
         {
             frmPrincipal p = new frmPrincipal();
             p.Show();
+        }
+
+        private void btnBuscar_Click(object sender, EventArgs e)
+        {
+            int id = Convert.ToInt32(txtId.Text);
+            dgvProductos.DataSource = p.buscarProductoId(id);
         }
     }
 }

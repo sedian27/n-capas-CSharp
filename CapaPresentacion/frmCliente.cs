@@ -52,7 +52,8 @@ namespace CapaPresentacion
                 MessageBox.Show("¡Por favor llene todos los campos!");
             }
             else{
-                c.insertarCliente(nombre, numruc, direccion, telefono);
+                ClienteCE cliente = new ClienteCE(0, nombre, numruc, direccion, telefono);
+                c.insertarCliente(cliente);
                 actualizar();
                 limpiar();
             }
@@ -71,7 +72,8 @@ namespace CapaPresentacion
                 string numruc = txtNumRuc.Text;
                 string direccion = txtDireccion.Text;
                 int telefono = Convert.ToInt32(txtTelefono.Text);
-                c.actualizarCliente(id, nombre, numruc, direccion, telefono);
+                ClienteCE cliente = new ClienteCE(id, nombre, numruc, direccion, telefono);
+                c.actualizarCliente(cliente);
                 actualizar();
                 limpiar();
             }
@@ -87,7 +89,8 @@ namespace CapaPresentacion
             }
             else
             {
-                c.eliminarCliente(id);
+                ClienteCE cliente = new ClienteCE(id);
+                c.eliminarCliente(cliente);
                 actualizar();
                 limpiar();
             }

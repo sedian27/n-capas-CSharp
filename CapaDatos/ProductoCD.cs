@@ -20,16 +20,16 @@ namespace CapaDatos
         ConexionCD db = new ConexionCD();
         SqlCommand cmd;
         SqlDataReader drProducto;
-        int id; string descripcion; string categoria; double precio;
         //Metodos del crud
         // Leer Datos
-        public List<ProductoCE> readerProductos(string query, string buscar = "")
+        public List<ProductoCE> readerProductos(string query, int idBuscar = 0, string buscar = "")
         {
             db.abrirConexion();
 
             cmd = db.comando();
             cmd.CommandText = query;
             cmd.Parameters.AddWithValue("@valor", buscar);
+            cmd.Parameters.AddWithValue("@id", idBuscar);
             drProducto = cmd.ExecuteReader();
             // Declarar una coleccion de productos
             List<ProductoCE> lstProductos = new List<ProductoCE>();
@@ -38,10 +38,10 @@ namespace CapaDatos
             // Hasta finalizar la tabla
             while (drProducto.Read())
             {
-                id = Convert.ToInt32(drProducto["id"]);
-                descripcion = drProducto["descripcion"].ToString();
-                categoria = drProducto["categoria"].ToString();
-                precio = Convert.ToDouble(drProducto["precio"]);
+                int id = Convert.ToInt32(drProducto["id"]);
+                string descripcion = drProducto["descripcion"].ToString();
+                string categoria = drProducto["categoria"].ToString();
+                double precio = Convert.ToDouble(drProducto["precio"]);
                 // Instanciar un nuevo producto
                 ProductoCE producto = new ProductoCE(id, descripcion, categoria, precio);
                 lstProductos.Add(producto);
@@ -51,8 +51,7 @@ namespace CapaDatos
         }
 
         // Insertar, Actualizar y Eliminar;
-
-        public void executeProductos(string query, string descripcion = "", string categoria = "", double precio = 0.00, int id = 0)
+        public void executeProductos(string query, ProductoCE producto)
         {
             db.abrirConexion();
             //crear un comando vinculado a la conexión.
@@ -61,10 +60,10 @@ namespace CapaDatos
             // Asignar el script SQL al comando
             cmd.CommandText = query;
             // Leer valores a actualizar
-            cmd.Parameters.AddWithValue("@descripcion", descripcion);
-            cmd.Parameters.AddWithValue("@categoria", categoria);
-            cmd.Parameters.AddWithValue("@precio", precio);
-            cmd.Parameters.AddWithValue("@id", id);
+            cmd.Parameters.AddWithValue("@descripcion", producto.Descripcion);
+            cmd.Parameters.AddWithValue("@categoria", producto.Categoria);
+            cmd.Parameters.AddWithValue("@precio", producto.Precio);
+            cmd.Parameters.AddWithValue("@id", producto.Id);
 
             //Ejecutar comando
             cmd.ExecuteNonQuery(); // UPDATE, INSERT, DELETE

@@ -9,15 +9,15 @@ namespace CapaEntidad
     public class ClienteCE
     {
         //Propiedades
-        private int id;
-        private string nombre;
-        private string numruc;
-        private string direccion;
-        private int telefono;
+        private int id = 0;
+        private string nombre = "";
+        private string numruc = "";
+        private string direccion = "";
+        private int telefono = 0;
 
         //Constructor
         public ClienteCE(){}
-        public ClienteCE(int vId, string vNombre, string vNumRuc, string vDireccion, int vTelefono)
+        public ClienteCE(int vId = 0, string vNombre = "", string vNumRuc = "", string vDireccion = "", int vTelefono = 0)
         {
             this.id = vId;
             this.nombre = vNombre;

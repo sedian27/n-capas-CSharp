@@ -43,6 +43,7 @@ namespace CapaPresentacion
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.Id = new System.Windows.Forms.Label();
+            this.btnBuscar = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProductos)).BeginInit();
             this.SuspendLayout();
             // 
@@ -74,7 +75,7 @@ namespace CapaPresentacion
             // 
             // btnGuardar
             // 
-            this.btnGuardar.Location = new System.Drawing.Point(513, 41);
+            this.btnGuardar.Location = new System.Drawing.Point(512, 70);
             this.btnGuardar.Name = "btnGuardar";
             this.btnGuardar.Size = new System.Drawing.Size(75, 32);
             this.btnGuardar.TabIndex = 26;
@@ -84,7 +85,7 @@ namespace CapaPresentacion
             // 
             // btnNuevo
             // 
-            this.btnNuevo.Location = new System.Drawing.Point(513, 7);
+            this.btnNuevo.Location = new System.Drawing.Point(512, 36);
             this.btnNuevo.Name = "btnNuevo";
             this.btnNuevo.Size = new System.Drawing.Size(75, 28);
             this.btnNuevo.TabIndex = 25;
@@ -125,7 +126,6 @@ namespace CapaPresentacion
             // 
             // txtId
             // 
-            this.txtId.Enabled = false;
             this.txtId.Location = new System.Drawing.Point(102, 10);
             this.txtId.Name = "txtId";
             this.txtId.Size = new System.Drawing.Size(61, 22);
@@ -178,11 +178,22 @@ namespace CapaPresentacion
             this.Id.TabIndex = 15;
             this.Id.Text = "Id";
             // 
+            // btnBuscar
+            // 
+            this.btnBuscar.Location = new System.Drawing.Point(512, 7);
+            this.btnBuscar.Name = "btnBuscar";
+            this.btnBuscar.Size = new System.Drawing.Size(75, 23);
+            this.btnBuscar.TabIndex = 29;
+            this.btnBuscar.Text = "Buscar";
+            this.btnBuscar.UseVisualStyleBackColor = true;
+            this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
+            // 
             // frmProductos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(599, 581);
+            this.Controls.Add(this.btnBuscar);
             this.Controls.Add(this.dgvProductos);
             this.Controls.Add(this.btnEliminar);
             this.Controls.Add(this.btnGuardar);
@@ -222,6 +233,7 @@ namespace CapaPresentacion
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label Id;
+        private System.Windows.Forms.Button btnBuscar;
     }
 }
 
